@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JackWeb", "JackWeb\JackWeb.csproj", "{E0FADA77-AE36-4B53-9A40-3D54AC9E72BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JackWeb.Data", "JackWeb.Data\JackWeb.Data.csproj", "{8BE91155-ED3E-44AE-94D1-045AB7FB93A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JackWeb.Framework", "JackWeb.Framework\JackWeb.Framework.csproj", "{8A4C37BB-D8CA-497B-A6B3-4B672C7C5F40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JackWeb.SocialService", "JackWeb.SocialService\JackWeb.SocialService.csproj", "{AB4F3F6F-8274-48F4-8261-A6EBB8DE1A45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JackWeb.SocialConnectorService", "JackWeb.SocialConnectorService\JackWeb.SocialConnectorService.csproj", "{D1496E97-14CA-4066-A6DA-5437A4729EB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JackWeb.Tests", "JackWeb.Tests\JackWeb.Tests.csproj", "{65E48B04-8A63-43A6-85D2-1F95031663A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{99271CF3-2F39-4A13-95CA-E2903C10E4B4}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0FADA77-AE36-4B53-9A40-3D54AC9E72BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0FADA77-AE36-4B53-9A40-3D54AC9E72BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0FADA77-AE36-4B53-9A40-3D54AC9E72BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0FADA77-AE36-4B53-9A40-3D54AC9E72BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BE91155-ED3E-44AE-94D1-045AB7FB93A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BE91155-ED3E-44AE-94D1-045AB7FB93A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BE91155-ED3E-44AE-94D1-045AB7FB93A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BE91155-ED3E-44AE-94D1-045AB7FB93A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A4C37BB-D8CA-497B-A6B3-4B672C7C5F40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A4C37BB-D8CA-497B-A6B3-4B672C7C5F40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A4C37BB-D8CA-497B-A6B3-4B672C7C5F40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A4C37BB-D8CA-497B-A6B3-4B672C7C5F40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB4F3F6F-8274-48F4-8261-A6EBB8DE1A45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB4F3F6F-8274-48F4-8261-A6EBB8DE1A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB4F3F6F-8274-48F4-8261-A6EBB8DE1A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB4F3F6F-8274-48F4-8261-A6EBB8DE1A45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1496E97-14CA-4066-A6DA-5437A4729EB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1496E97-14CA-4066-A6DA-5437A4729EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1496E97-14CA-4066-A6DA-5437A4729EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1496E97-14CA-4066-A6DA-5437A4729EB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65E48B04-8A63-43A6-85D2-1F95031663A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65E48B04-8A63-43A6-85D2-1F95031663A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65E48B04-8A63-43A6-85D2-1F95031663A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65E48B04-8A63-43A6-85D2-1F95031663A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

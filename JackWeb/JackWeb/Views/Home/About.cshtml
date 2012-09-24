@@ -1,13 +1,55 @@
 ﻿@{
-    ViewBag.Title = "About";
+	ViewBag.Title = "About";
 }
-
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
+	<h1>@ViewBag.Title</h1>
 </hgroup>
-
+<aside class="float-right">
+	<img src="~/Images/Jack.jpg" />
+</aside>
 <article>
-    <p>
-        @ViewBag.Message
-    </p>
+	<div class="float-left">
+		<section>
+		Hi, my name is Jack..
+	</section>
+		<section>
+	This site is created for me to experiment with various new technologies. Because it's not easy to
+		@Html.ActionLink("showcase implementation details", "Index", "Techchoice") on my page, i'll shortly list some of my choices.
+<br />
+		I'm a passionate developer within the Microsoft platform, and I've developed since 1999, ranging from
+		from first hardware near development using Pascal, ANSI C and ANSI C++.
+		As time went though I moved more further the development of applications maily using Microsoft Visual C++ 6
+		and the MFC (Microsoft Foundation Classes) Framework.
+<br />
+		As the world of .NET became more and more interesting I took a leap of faith (an important choice) and started
+		developing with this new platform and C#.
+<br />
+		Since 2003 I've been around in the .NET world doing everything from standard WinForms applications to WCF Services,
+		WebForms and (no-brainer) MVC.
+<br />
+<br />
+	</section>
+		<section>
+	The world of software development changes rapidly and so ways of problem-crunching today includes lambdas, clean coding
+		and unit testing. We as developers also embrace new ways of working - say - agile!? And so, in order not to stagnate I'm
+		always seeking the newest within the software development process and the tools to get things done, with a quality first
+		approach.
+<br />
+<br />
+		I'm supporting the notion that software frameworks and the likes should be open-sourced and I myself am a strong spokesman
+		using these projects.. One excellent example is GitHub and Git.
+		<br />
+<br />
+	</section>
+		<section>
+		This is my little story. Please feel free @Html.ActionLink("contacting me", "Contact", "Home"), as I'm always keen on a tech-talk to likeminded peers.
+		<br />
+<br />
+<br />
+		Best regards
+<br />
+		Jack Andersen
+		</section>
+		</p>
+	</div>
 </article>

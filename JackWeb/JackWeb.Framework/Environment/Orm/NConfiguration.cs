@@ -5,63 +5,79 @@ using System.Text;
 using NHibernate.Cfg;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using System.IO;
+using NHibernate.Tool.hbm2ddl;
 
 namespace JackWeb.Framework.Environment.Orm
 {
-    public class NConfiguration
-    {
-        public Configuration ConfigureDefault(string connectionKeyStringKey, bool isTesting=false)
-        {
-            var fluentConfig = Fluently.Configure();
-            
-            var test = System.Configuration.ConfigurationManager.ConnectionStrings["Azure"];
+	public class NConfiguration
+	{
+		public Configuration ConfigureDefault(string connectionKeyStringKey, bool isTesting = false)
+		{
+			var fluentConfig = Fluently.Configure();
 
-            fluentConfig = isTesting ? 
-                fluentConfig.Database(SQLiteConfiguration.Standard.InMemory()) :
-                fluentConfig.Database(MsSqlConfiguration.MsSql2008
-                    .ConnectionString(c => 
-                        c.Is(connectionKeyStringKey)
-                    )
-                );
+			var test = System.Configuration.ConfigurationManager.ConnectionStrings["Azure"];
 
-            fluentConfig = DoMappingsFromAssembly(fluentConfig);
+			fluentConfig = isTesting ?
+				fluentConfig.Database(SQLiteConfiguration.Standard.InMemory()) :
+				fluentConfig.Database(MsSqlConfiguration.MsSql2008
+					.ConnectionString(c =>
+						c.Is(connectionKeyStringKey)
+					)
+				);
 
-            return fluentConfig.BuildConfiguration();
-        }
+			fluentConfig = DoMappingsFromAssembly(fluentConfig);
 
-        public Configuration ConfigureDefault(NConnection connection)
-        {
-            var fluentConfig = Fluently.Configure();
+			return fluentConfig.BuildConfiguration();
+		}
 
-            fluentConfig = connection.IsTesting ?
-                fluentConfig.Database(SQLiteConfiguration.Standard.InMemory()) :
-                fluentConfig.Database(
-                    MsSqlConfiguration.MsSql2008
-                    .ConnectionString(c => {
-                        c.Server(connection.Server);
-                        c.Database(connection.Database);
-                        c.Username(connection.User);
-                        c.Password(connection.Password);
+		public Configuration ConfigureDefault(NConnection connection)
+		{
+			var fluentConfig = Fluently.Configure();
 
-                        if (connection.TrustedConnection)
-                        {
-                            c.TrustedConnection();
-                        }
-                    })  
-                );
+			fluentConfig = connection.IsTesting ?
+				fluentConfig.Database(SQLiteConfiguration.Standard.InMemory()) :
+				fluentConfig.Database(
+					MsSqlConfiguration.MsSql2008
+					.ConnectionString(c =>
+					{
+						c.Server(connection.Server);
+						c.Database(connection.Database);
+						c.Username(connection.User);
+						c.Password(connection.Password);
 
-            fluentConfig = DoMappingsFromAssembly(fluentConfig);
+						if (connection.TrustedConnection)
+						{
+							c.TrustedConnection();
+						}
+					})
+				);
 
-            return fluentConfig.BuildConfiguration();
-        }
+			fluentConfig = DoMappingsFromAssembly(fluentConfig);
 
-        protected virtual FluentConfiguration DoMappingsFromAssembly(FluentConfiguration fluentConfig)
-        {
-            return fluentConfig
-                .Mappings(x =>
-                {
-                    x.FluentMappings.AddFromAssemblyOf<JackWeb.Data.Collectors.FacebookCollector>();
-                });
-        }
-    }
+			return fluentConfig.BuildConfiguration();
+		}
+
+		protected virtual FluentConfiguration DoMappingsFromAssembly(FluentConfiguration fluentConfig)
+		{
+			return fluentConfig
+				.Mappings(x =>
+				{
+					x.FluentMappings.AddFromAssemblyOf<JackWeb.Data.Collectors.FacebookCollector>();
+				});
+		}
+
+		public void CreateSchema(Configuration configuration, string filenameTarget)
+		{
+			var schemaExport = new SchemaExport(configuration);
+			schemaExport.SetOutputFile(filenameTarget);
+			schemaExport.Create(false, true);
+		}
+
+		public void ExportSchemaToDb(Configuration configuration)
+		{
+			var schemaExport = new SchemaExport(configuration);
+			schemaExport.Execute(false, true, false);
+		}
+	}
 }

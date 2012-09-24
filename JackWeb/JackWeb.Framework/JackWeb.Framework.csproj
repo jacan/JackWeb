@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Environment\CloudInformation.cs" />
     <Compile Include="Environment\Mvc\Bootstrapper.cs" />
+    <Compile Include="Environment\Orm\Codefirst\NCascadeConvention.cs" />
+    <Compile Include="Environment\Orm\Codefirst\NMapAutoConfiguration.cs" />
     <Compile Include="Environment\Orm\NConfiguration.cs" />
     <Compile Include="Environment\Orm\NConnection.cs" />
     <Compile Include="Environment\Orm\NSessionConfiguration.cs" />

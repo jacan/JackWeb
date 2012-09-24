@@ -61,6 +61,7 @@
     <Compile Include="Environment\Orm\NConfiguration.cs" />
     <Compile Include="Environment\Orm\NConnection.cs" />
     <Compile Include="Environment\Orm\NSessionConfiguration.cs" />
+    <Compile Include="Extensions\NullExtensions.cs" />
     <Compile Include="Injection\ControllerInjector.cs" />
     <Compile Include="Injection\IInject.cs" />
     <Compile Include="Injection\Injector.cs">

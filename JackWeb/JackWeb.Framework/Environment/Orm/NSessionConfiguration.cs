@@ -7,27 +7,27 @@ using System.Configuration;
 
 namespace JackWeb.Framework.Environment.Orm
 {
-    public class NSessionConfiguration
-    {
-        private readonly string _connectionString;
-        protected ISessionFactory _sessionFactory;
+	public class NSessionConfiguration
+	{
+		private readonly string _connectionString;
+		protected ISessionFactory _sessionFactory;
 
-        public NSessionConfiguration(string connectionKey)
-        {
-            _connectionString = ConfigurationManager.ConnectionStrings[connectionKey].ConnectionString;
-        }
+		public NSessionConfiguration(string connectionKey)
+		{
+			_connectionString = ConfigurationManager.ConnectionStrings[connectionKey].ConnectionString;
+		}
 
-        public ISessionFactory CreateSession()
-        {
-            if(_sessionFactory == null)
-            {
-                var nConfig = new NConfiguration();
-                var createdConfig = nConfig.ConfigureDefault(_connectionString);
+		public ISessionFactory CreateSession()
+		{
+			if (_sessionFactory == null)
+			{
+				var nConfig = new NConfiguration();
+				var createdConfig = nConfig.ConfigureDefault(_connectionString);
 
-                _sessionFactory = createdConfig.BuildSessionFactory();
-            }
+				_sessionFactory = createdConfig.BuildSessionFactory();
+			}
 
-            return _sessionFactory;
-        }
-    }
+			return _sessionFactory;
+		}
+	}
 }

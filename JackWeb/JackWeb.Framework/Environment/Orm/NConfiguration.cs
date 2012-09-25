@@ -1,17 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NHibernate.Cfg;
+using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using System.IO;
 using NHibernate.Tool.hbm2ddl;
+using NHibernate.Cfg;
 
 namespace JackWeb.Framework.Environment.Orm
 {
 	public class NConfiguration
 	{
+		public NConfiguration()
+		{
+			MapPersistenceModel = null;
+		}
+
+		public Func<AutoPersistenceModel> MapPersistenceModel
+		{
+			get;
+			set;
+		}
+
 		public Configuration ConfigureDefault(string connectionKeyStringKey, bool isTesting = false)
 		{
 			var fluentConfig = Fluently.Configure();
@@ -26,7 +34,7 @@ namespace JackWeb.Framework.Environment.Orm
 					)
 				);
 
-			fluentConfig = DoMappingsFromAssembly(fluentConfig);
+			DoPostConfiguration(fluentConfig);
 
 			return fluentConfig.BuildConfiguration();
 		}
@@ -53,18 +61,16 @@ namespace JackWeb.Framework.Environment.Orm
 					})
 				);
 
-			fluentConfig = DoMappingsFromAssembly(fluentConfig);
+			DoPostConfiguration(fluentConfig);
 
 			return fluentConfig.BuildConfiguration();
 		}
 
-		protected virtual FluentConfiguration DoMappingsFromAssembly(FluentConfiguration fluentConfig)
+		protected virtual void DoPostConfiguration(FluentConfiguration fluentConfig)
 		{
-			return fluentConfig
-				.Mappings(x =>
-				{
-					x.FluentMappings.AddFromAssemblyOf<JackWeb.Data.Collectors.FacebookCollector>();
-				});
+			fluentConfig
+				.Mappings(x => { x.AutoMappings.Add(MapPersistenceModel.Invoke()); })
+				.ExposeConfiguration(ExportSchemaToDb);
 		}
 
 		public void CreateSchema(Configuration configuration, string filenameTarget)

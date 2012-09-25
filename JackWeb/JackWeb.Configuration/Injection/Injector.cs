@@ -6,6 +6,7 @@ using JackWeb.Framework.Environment.Orm;
 using JackWeb.Framework.Environment.Orm.Codefirst;
 using NHibernate;
 using StructureMap;
+using JackWeb.Configuration;
 
 namespace JackWeb.Framework.Configuration.Injection
 {
@@ -23,8 +24,14 @@ namespace JackWeb.Framework.Configuration.Injection
 					.HybridHttpOrThreadLocalScoped()
 					.Use(() => ObjectFactory.GetInstance<ISessionFactory>().OpenSession());
 
+				x.For<IPersistenceConfiguration>().Use<PersistenceConfiguration>();
 				x.For<DefaultAutomappingConfiguration>().Use<NMapAutoConfiguration>();
 				x.For<IReferenceConvention>().Use<NCascadeConvention>();
+
+				x.ForConcreteType<NConfiguration>()
+					.Configure
+					.SetProperty(
+					o => o.MapPersistenceModel = new Func<AutoPersistenceModel>(GetInstance<IPersistenceConfiguration>().CreatePersistenceModel));
 
 				x.For<IInject>()
 					.Use<Injector>();
@@ -33,9 +40,7 @@ namespace JackWeb.Framework.Configuration.Injection
 				{
 					scan.Assembly(typeof(IRepository<>).Assembly);
 					scan.WithDefaultConventions();
-
 					x.For(typeof(IRepository<>)).Use(typeof(Repository<>));
-
 				});
 			});
 		}
@@ -48,6 +53,12 @@ namespace JackWeb.Framework.Configuration.Injection
 		public object GetInstance(Type t)
 		{
 			return ObjectFactory.GetInstance(t);
+		}
+
+
+		public string VerboseConfiguration()
+		{
+			return ObjectFactory.WhatDoIHave();
 		}
 	}
 }

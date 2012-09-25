@@ -10,5 +10,7 @@ namespace JackWeb.Framework.Configuration.Injection
 		void Prepare();
 		T GetInstance<T>();
 		object GetInstance(Type t);
+
+		string VerboseConfiguration();
 	}
 }

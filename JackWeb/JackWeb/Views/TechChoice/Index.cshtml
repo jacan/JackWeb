@@ -3,6 +3,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<aside>
+	@if (User.Identity.IsAuthenticated)
+	{
+		@Html.ActionLink("Add tech", "Create", "TechChoice")
+	}
+</aside>
 <h2>Nothing here???!!</h2>
 <h3>There will be soon...</h3>
 

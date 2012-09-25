@@ -77,6 +77,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JackWeb.Configuration\JackWeb.Framework.Configuration.csproj">
+      <Project>{07F5EED4-B18A-4BDE-9966-95BF368235D5}</Project>
+      <Name>JackWeb.Framework.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JackWeb.Data\JackWeb.Data.csproj">
       <Project>{8BE91155-ED3E-44AE-94D1-045AB7FB93A2}</Project>
       <Name>JackWeb.Data</Name>

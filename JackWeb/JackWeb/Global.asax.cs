@@ -2,8 +2,8 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using JackWeb.Framework.Environment.Mvc;
-using JackWeb.Framework.Injection;
+using JackWeb.Framework.Configuration.Injection;
+using JackWeb.Framework.Configuration.Mvc;
 
 namespace JackWeb
 {

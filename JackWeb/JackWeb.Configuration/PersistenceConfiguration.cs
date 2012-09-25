@@ -4,7 +4,7 @@ using FluentNHibernate.Conventions;
 
 namespace JackWeb.Configuration
 {
-	public class PersistenceConfiguration
+	public class PersistenceConfiguration : IPersistenceConfiguration
 	{
 		public DefaultAutomappingConfiguration MappingConfiguration
 		{

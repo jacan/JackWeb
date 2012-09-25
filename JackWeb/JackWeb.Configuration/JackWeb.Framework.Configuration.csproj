@@ -57,6 +57,7 @@
     <Compile Include="Injection\ControllerInjector.cs" />
     <Compile Include="Injection\IInject.cs" />
     <Compile Include="Injection\Injector.cs" />
+    <Compile Include="IPersistenceConfiguration.cs" />
     <Compile Include="Mvc\Bootstrapper.cs" />
     <Compile Include="PersistenceConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
